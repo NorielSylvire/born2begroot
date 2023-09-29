@@ -38,7 +38,8 @@ USRS=$(users | wc -w)
 # Commands
 CMDS=$(journalctl _COMM=sudo | grep COMMAND | wc -l)
 
-wall "  #Architecture: $ARCH
+wall "
+        #Architecture: $ARCH
         #CPU physical : $PCPU
         #vCPU : $VCPU
         #Memory Usage: $USDMEM/${TOTMEM}MB $PRCMEM
@@ -49,5 +50,5 @@ wall "  #Architecture: $ARCH
         #TCP Connections : $TCPC ESTABLISHED
         #User log: $USRS
         #Network: IP $IPV4 ($MACA)
-        #Sudo : $CMDS"
+        #Sudo : $CMDS cmd"
 
