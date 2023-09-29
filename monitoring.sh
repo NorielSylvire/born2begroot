@@ -32,4 +32,9 @@ else
   echo "#LVM use: no"
 fi
 
-echo "#TCP Connections: $(ss -t -a | grep ESTAB | wc -l)"
+echo "#TCP Connections: $(ss -t -a | grep ESTAB | wc -l) ESTABLISHED"
+
+echo "#User log: $(users | wc l)"
+
+echo "#Network: IP $(hostname -I) ($(ip link | grep "link/ether" | awk '{print $2}'))"
+
