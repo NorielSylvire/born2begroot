@@ -26,3 +26,10 @@ echo "#CPU load: $CPULD"
 
 echo "#Last boot: $(who -b | awk '$1=="system" {print $3 " " $4}')"
 
+if [ $(lsblk | grep "lvm" | wc -l) -gt 0 ]; then
+  echo "#LVM use: yes"
+else
+  echo "#LVM use: no"
+fi
+
+echo "#TCP Connections: $(ss -t -a | grep ESTAB | wc -l)"
