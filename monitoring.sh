@@ -10,7 +10,7 @@ TOTDSK=$(df -m | grep "/dev" --exclude=/boot | awk '{total_disk += $2} END {prin
 PERCDSK=$(df -m | grep "/dev" --exclude=/boot | awk '{used_disk += $3} {total_disk += $2} END {printf ("(%d%%)\n"), used_disk/total_disk*100}')
 
 # CPU variables
-CPULD=$(vmstat 1 4 | tail -1 | awk '{printf ("%f%%"), 100-$15}')
+CPULD=$(vmstat 1 4 | tail -1 | awk '{printf ("%.1f%%"), 100-$15}')
 
 echo "#Architecture: $(uname -a)"
 
@@ -23,4 +23,6 @@ echo "#Memory Usage: $USEDMEM/$TOTMEM $PERCMEM"
 echo "#Disk Usage: $USEDDSK/$TOTDSK $PERCDSK"
 
 echo "#CPU load: $CPULD"
+
+echo "#Last boot: $(who -b | awk '$1=="system" {print $3 " " $4}')"
 
